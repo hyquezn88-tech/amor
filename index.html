@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#d9b8ff">
+    <title>Nosso cantinho 💜🌸</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+:root {
+        --lilas: #cda7f5;
+        --lilas-claro: #eadbff;
+        --rosa: #f4b7cf;
+        --rosa-claro: #fff0f6;
+        --texto: #5d4968;
+        --branco: rgba(255,255,255,.82);
+        --sombra: 0 20px 60px rgba(111, 75, 132, .16);
+    }
+
+        * {
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            color: var(--texto);
+            font-family: "Poppins", sans-serif;
+            background:
+            radial-gradient(circle at 10% 10%, rgba(244,183,207,.45), transparent 28%),
+            radial-gradient(circle at 90% 20%, rgba(205,167,245,.48), transparent 30%),
+            linear-gradient(135deg, #fff7fb 0%, #f6ecff 52%, #fff4f8 100%);
+            overflow-x: hidden;
+        }
+
+        .petals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 10;
+            overflow: hidden;
+        }
+        .petal {
+            position: absolute;
+            top: -40px;
+            width: 13px;
+            height: 18px;
+            border-radius: 80% 20% 80% 20%;
+            background: rgba(238, 188, 215, .7);
+            filter: blur(.2px);
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            from {
+                transform: translate3d(0,-50px,0) rotate(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: .85;
+            }
+            to {
+                transform: translate3d(100px,110vh,0) rotate(420deg);
+                opacity: 0;
+            }
+        }
+
+        .welcome {
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background:
+            radial-gradient(circle at 20% 20%, rgba(244,183,207,.5), transparent 30%),
+            radial-gradient(circle at 80% 70%, rgba(205,167,245,.55), transparent 34%),
+            linear-gradient(135deg, #fff7fb, #f2e7ff);
+            transition: opacity .8s ease, visibility .8s ease;
+        }
+        .welcome.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .welcome-card {
+            width: min(620px, 100%);
+            padding: 42px 28px;
+            text-align: center;
+            background: rgba(255,255,255,.72);
+            border: 1px solid rgba(255,255,255,.95);
+            border-radius: 34px;
+            box-shadow: 0 25px 80px rgba(111,75,132,.18);
+            backdrop-filter: blur(18px);
+        }
+        .welcome-card h2 {
+            margin: 16px 0 10px;
+            font: 400 clamp(2.5rem, 8vw, 4.5rem) "DM Serif Display", serif;
+            color: #8b659d;
+        }
+        .welcome-card p {
+            color: #78617f;
+            line-height: 1.8;
+            margin: 0 auto 25px;
+            max-width: 470px;
+        }
+        .welcome-card small {
+            display: block;
+            margin-top: 15px;
+            color: #9a7ea4;
+            font-size: .76rem;
+        }
+        .welcome-lily {
+            font-size: 3.3rem;
+            animation: flowerFloat 3s ease-in-out infinite;
+        }
+        @keyframes flowerFloat {
+            50% {
+                transform: translateY(-7px) rotate(3deg);
+            }
+        }
+
+        .music-control {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 90;
+            width: 50px;
+            height: 50px;
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 50%;
+            background: rgba(255,255,255,.76);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 28px rgba(111,75,132,.18);
+            cursor: pointer;
+            font-size: 1.25rem;
+            display: none;
+        }
+        .music-control.show {
+            display: block;
+        }
+
+        .hero {
+            min-height: 100svh;
+            display: grid;
+            place-items: center;
+            padding: 48px 20px 70px;
+            position: relative;
+        }
+        .hero-inner {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .eyebrow {
+            display: inline-block;
+            padding: 9px 17px;
+            border-radius: 999px;
+            background: rgba(255,255,255,.62);
+            border: 1px solid rgba(255,255,255,.9);
+            backdrop-filter: blur(12px);
+            font-size: .78rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: #8b6ba0;
+        }
+        h1 {
+            margin: 22px 0 12px;
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(3.1rem, 10vw, 7.2rem);
+            line-height: .92;
+            font-weight: 400;
+            background: linear-gradient(110deg, #a979d5, #e493b9, #a979d5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+        .subtitle {
+            max-width: 620px;
+            margin: 0 auto 30px;
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #755f80;
+        }
+
+        .lily-stage {
+            height: 170px;
+            position: relative;
+            margin: 10px auto 20px;
+            max-width: 440px;
+        }
+        .stem {
+            position: absolute;
+            width: 5px;
+            height: 125px;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%) rotate(3deg);
+            background: linear-gradient(#6e9b72, #4e7657);
+            border-radius: 99px;
+        }
+        .leaf {
+            position: absolute;
+            width: 100px;
+            height: 30px;
+            background: #7da57b;
+            border-radius: 100% 0 100% 0;
+            left: 50%;
+            bottom: 42px;
+            transform-origin: left center;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+        }
+        .leaf.l {
+            transform: translateX(-94px) rotate(19deg);
+        }
+        .leaf.r {
+            transform: translateX(-6px) rotate(-160deg);
+        }
+        .lily {
+            position: absolute;
+            left: 50%;
+            top: 5px;
+            width: 112px;
+            height: 112px;
+            transform: translateX(-50%);
+            animation: sway 4s ease-in-out infinite;
+        }
+        .petal-flower {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 48px;
+            height: 82px;
+            margin: -41px -24px;
+            border-radius: 70% 30% 70% 30%;
+            background: linear-gradient(135deg, #fff, #f2dcff 62%, #efc2dd);
+            transform-origin: 50% 82%;
+            box-shadow: 0 3px 16px rgba(177, 125, 203, .17);
+        }
+        .p1 {
+            transform: rotate(0deg) translateY(-16px);
+        }
+        .p2 {
+            transform: rotate(60deg) translateY(-16px);
+        }
+        .p3 {
+            transform: rotate(120deg) translateY(-16px);
+        }
+        .p4 {
+            transform: rotate(180deg) translateY(-16px);
+        }
+        .p5 {
+            transform: rotate(240deg) translateY(-16px);
+        }
+        .p6 {
+            transform: rotate(300deg) translateY(-16px);
+        }
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 18px;
+            height: 18px;
+            margin: -9px;
+            border-radius: 50%;
+            background: #f1c3d6;
+            box-shadow: 0 0 0 6px rgba(255,255,255,.35);
+        }
+        @keyframes sway {
+            50% {
+                transform: translateX(-50%) rotate(3deg) translateY(-3px);
+            }
+        }
+
+        .button {
+            border: 0;
+            cursor: pointer;
+            color: #fff;
+            background: linear-gradient(135deg, #ad80d7, #e49bbd);
+            padding: 14px 24px;
+            border-radius: 999px;
+            font: 500 1rem "Poppins", sans-serif;
+            box-shadow: 0 12px 28px rgba(157,111,190,.24);
+            transition: .25s ease;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 34px rgba(157,111,190,.3);
+        }
+
+        section {
+            padding: 80px 20px;
+        }
+        .wrap {
+            max-width: 1000px;
+            margin: auto;
+        }
+        .section-title {
+            text-align: center;
+            font-family: "DM Serif Display", serif;
+            font-size: clamp(2.3rem, 6vw, 4rem);
+            font-weight: 400;
+            margin: 0 0 12px;
+            color: #805e96;
+        }
+        .section-sub {
+            text-align: center;
+            margin: 0 auto 35px;
+            color: #866f8f;
+        }
+
+        .counter-card {
+            background: var(--branco);
+            border: 1px solid rgba(255,255,255,.95);
+            backdrop-filter: blur(18px);
+            border-radius: 34px;
+            padding: 36px 20px;
+            box-shadow: var(--sombra);
+            text-align: center;
+        }
+        .counter-label {
+            font-size: .82rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: #967aa3;
+        }
+        .counter {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 25px;
+        }
+        .time-box {
+            padding: 18px 8px;
+            border-radius: 22px;
+            background: linear-gradient(145deg, rgba(237,220,255,.72), rgba(255,235,243,.8));
+            border: 1px solid rgba(255,255,255,.9);
+        }
+        .num {
+            display: block;
+            font-size: clamp(1.6rem, 5vw, 3rem);
+            font-weight: 600;
+            color: #765286;
+            line-height: 1;
+        }
+        .unit {
+            display: block;
+            margin-top: 8px;
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            color: #9b7ba8;
+        }
+        .start-date {
+            margin-top: 20px;
+            font-size: .85rem;
+            color: #927b98;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+        }
+        .photo-card {
+            margin: 0;
+            background: rgba(255,255,255,.7);
+            padding: 11px;
+            border-radius: 30px;
+            box-shadow: var(--sombra);
+            transform: rotate(-1.2deg);
+            transition: .3s ease;
+        }
+        .photo-card:nth-child(2) {
+            transform: rotate(1.2deg);
+        }
+        .photo-card:hover {
+            transform: translateY(-6px) rotate(0);
+        }
+        .photo-card img {
+            display: block;
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 22px;
+        }
+        .photo-card figcaption {
+            padding: 15px 8px 8px;
+            text-align: center;
+            font-family: "DM Serif Display",serif;
+            font-size: 1.2rem;
+            color: #80638e;
+        }
+
+        .text-spaces {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            margin-top: 30px;
+        }
+        .text-card {
+            padding: 30px 24px;
+            background: rgba(255,255,255,.75);
+            border: 1px solid rgba(255,255,255,.9);
+            border-radius: 30px;
+            box-shadow: var(--sombra);
+        }
+        .text-card h3 {
+            margin: 0 0 12px;
+            font-family: "DM Serif Display",serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #8a669b;
+        }
+        .text-card p {
+            margin: 0;
+            min-height: 150px;
+            line-height: 1.9;
+            color: #735d7c;
+            white-space: pre-line;
+        }
+
+        .letter {
+            max-width: 760px;
+            margin: auto;
+            padding: 35px 28px;
+            background: rgba(255,255,255,.75);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,.9);
+            box-shadow: var(--sombra);
+            line-height: 1.9;
+            text-align: center;
+        }
+        .letter p {
+            margin: 0 0 14px;
+        }
+        .signature {
+            font-family: "DM Serif Display",serif;
+            font-size: 1.7rem;
+            color: #a06d98;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px 55px;
+            color: #9a7ea4;
+            font-size: .85rem;
+        }
+
+        @media (max-width: 650px) {
+            .text-spaces {
+                grid-template-columns: 1fr;
+            }
+            .counter {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            .photo-card img {
+                height: auto;
+                max-height: 520px;
+            }
+            section {
+                padding: 65px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals" aria-hidden="true"></div>
+
+    <div class="welcome" id="welcome">
+        <div class="welcome-card">
+            <div class="welcome-lily">
+                🌸
+            </div>
+            <span class="eyebrow">feito especialmente pra você</span>
+            <h2>Oi, meu amor 💕</h2>
+            <p>
+                Entra aqui... tem um cantinho que eu fiz pensando em nós.
+            </p>
+            <button class="button" id="enterBtn">entrar no nosso cantinho 🌸</button>
+            <small>A música começa quando você entrar 🎶</small>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop preload="auto">
+        <source src="musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="music-control" id="musicBtn" aria-label="Pausar música">🎵</button>
+
+    <main>
+        <section class="hero">
+            <div class="hero-inner">
+                <span class="eyebrow">um cantinho feito pra nós</span>
+                <h1>Nosso Lugar</h1>
+                <p class="subtitle">
+                    Entre lilás, rosa, flores e todas as pequenas lembranças, existe um lugar que é só nosso. 🌸
+                </p>
+
+                <div class="lily-stage" aria-hidden="true">
+                    <div class="stem"></div>
+                    <div class="leaf l"></div>
+                    <div class="leaf r"></div>
+                    <div class="lily">
+                        <span class="petal-flower p1"></span>
+                        <span class="petal-flower p2"></span>
+                        <span class="petal-flower p3"></span>
+                        <span class="petal-flower p4"></span>
+                        <span class="petal-flower p5"></span>
+                        <span class="petal-flower p6"></span>
+                        <span class="center"></span>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+                    <button class="button" onclick="document.getElementById('tempo').scrollIntoView({behavior:'smooth'})">
+                        ver quanto tempo já passou 💕
+                    </button>
+                    <a class="button" href="https://open.spotify.com/track/7zThUTdmcrO1GHGnSrJsMJ" target="_blank" rel="noopener noreferrer" style="text-decoration:none;">
+                        ouvir "Nosso Lugar" no Spotify 🎶
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="tempo">
+            <div class="wrap">
+                <h2 class="section-title">Nosso tempo</h2>
+                <p class="section-sub">
+                    E enquanto esse relógio continua andando, a nossa história continua sendo escrita.
+                </p>
+
+                <div class="counter-card">
+                    <div class="counter-label">
+                        juntos desde 27 de maio de 2026 às 12:00
+                    </div>
+                    <div class="counter" aria-live="polite">
+                        <div class="time-box">
+                            <span class="num" id="days">0</span><span class="unit">dias</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="num" id="hours">00</span><span class="unit">horas</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="num" id="minutes">00</span><span class="unit">minutos</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="num" id="seconds">00</span><span class="unit">segundos</span>
+                        </div>
+                    </div>
+                    <div class="start-date">
+                        O contador se atualiza sozinho, segundo por segundo. ⏳💜
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2 class="section-title">Nossas fotos</h2>
+                <p class="section-sub">
+                    Dois pedacinhos de uma história que ainda tem muita coisa pra viver.
+                </p>
+
+                <div class="gallery">
+                    <figure class="photo-card">
+                        <img <img src="./foto1.jpg" alt="Foto de um momento especial">
+                        <figcaption>um sorriso que eu guardaria em qualquer lugar 🌷</figcaption>
+                    </figure>
+                    <figure class="photo-card">
+                        <img src="foto2.jpg" alt="Foto de um momento especial">
+                        <figcaption>uma lembrança que virou parte de nós 💕</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2 class="section-title">Duas coisinhas pra você 💌</h2>
+                <p class="section-sub">
+                    Esses dois espaços ficam prontinhos pra você trocar pelos textos que quiser.
+                </p>
+
+                <div class="text-spaces">
+                    <article class="text-card">
+                        <h3>Uma mensagem pra você 🌷</h3>
+                        <p>
+                            meu amor, eu sou muito feliz por ter você comigo, você e a pessoa que me fez bem nesse mundo inteiro, obrigado por tudo que vc sempre fez e faz por mim ate hoje, o esforço que vc sempre faz poder me ver feliz, desde em que eu te conheci, eu senti que era você pra ser a pessoa com quem eu vou me casar, agradeço sempre por me ajudar as horas mais difíceis, da forma que eu sei que posso contar sempre com vc, pode contar comigo sempre, vc e o amor da minha vida, e o amor PRA minha vida, o meu porto seguro, meu sorriso mais sincero, minha dose diária de felicidade, vc é o meu maior sonho que se tornou realidade, sou feliz porque te amoo, e te quero pra sempre ao meu lado, obrigado por ser alguém tão especial na minha vida, eu fico te namorando e me apaixonando por cada pequeno detalhes seu, voce e a pessoa mais incrível que conheci nesse mundo, a pessoa que tem o coração mais puro e cheio de amor, agradeço a deus pelo nosso relacionamento, nossa simplicidade, nossa amizade, nossa intimidade e o nosso AMOR.
+                            eu te amo infinitamente!🤍
+                        </p>
+                    </article>
+
+                    <article class="text-card">
+                        <h3>Mais uma coisinha 💕</h3>
+                        <p>
+                            sobre minha princesa? ela é incrível, especial e única.
+                            Ela tem um brilho nos olhinhos igual o brilho das estrelas, ela merece o mundo, o universo inteiro, eu tenho tanto orgulho de vc, vc sempre terá meu coraçãozinho, vc me mostrou o significado de amar alguém verdadeiramente, sou apaixonado por cada detalhe seu, cada mínimo detalhe seu me chama atenção cada vez mais, seus olhinhos é a coisa mais iluminada desse mundo inteiro, seu cabelinho perfeito, sua voz é meu som preferido, transmite uma tranquilidade e uma sensação de aconchego, tudo isso ao msm tempo, quero cuidar de vc como nunca cuidei de ninguém, e te fazer feliz do jeitinho que você merece, eu quero que você saiba q vc é única, a única ronda dos meus pensamentos, a única que mora no meu coração, você é única em todos os quesitos da minha vida. Eu te amo mil milhões meu amor.
+                            .
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="wrap">
+                <h2 class="section-title">Pra você</h2>
+                <div class="letter">
+                    <p>
+                        Eu queria que esse cantinho tivesse um pouco daquilo que sinto quando penso em nós.
+                    </p>
+                    <p>
+                        Não cabe tudo em uma tela, nem em um contador. Mas cada segundo que passa é mais um segundo da nossa história.
+                    </p>
+                    <p>
+                        Que venham muitos dias, horas, minutos e segundos ao seu lado. 🌸
+                    </p>
+                    <div class="signature">
+                        com carinho, João 💜
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        feito com lilás, rosa e um pouquinho de amor 🌸
+    </footer>
+
+    <script>
+        const welcome = document.getElementById("welcome");
+        const bgMusic = document.getElementById("bgMusic");
+        const musicBtn = document.getElementById("musicBtn");
+        const enterBtn = document.getElementById("enterBtn");
+
+        enterBtn.addEventListener("click", async () => {
+            welcome.classList.add("hidden");
+            musicBtn.classList.add("show");
+
+            // O navegador permite iniciar áudio após o clique do visitante.
+            try {
+                await bgMusic.play();
+            } catch (e) {
+                // Se musica.mp3 ainda não estiver na pasta, o site continua funcionando.
+            }
+        });
+
+        musicBtn.addEventListener("click", async () => {
+            if (bgMusic.paused) {
+                try {
+                    await bgMusic.play();
+                } catch (e) {}
+                musicBtn.textContent = "🎵";
+                musicBtn.setAttribute("aria-label", "Pausar música");
+            } else {
+                bgMusic.pause();
+                musicBtn.textContent = "🔇";
+                musicBtn.setAttribute("aria-label", "Tocar música");
+            }
+        });
+
+        // Início do namoro: 27/05/2026 às 12:00 no horário de Brasília (UTC-3).
+        const start = new Date("2026-05-27T12:00:00-03:00");
+
+        function updateCounter() {
+            const now = new Date();
+            let diff = now - start;
+
+            if (diff < 0) diff = 0;
+
+            const totalSeconds = Math.floor(diff / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+        }
+
+        updateCounter();
+        setInterval(updateCounter, 1000);
+
+        // Pétalas suaves caindo pela tela.
+        const petals = document.querySelector(".petals");
+        for (let i = 0; i < 18; i++) {
+            const p = document.createElement("span");
+            p.className = "petal";
+            p.style.left = Math.random() * 100 + "vw";
+            p.style.animationDuration = (7 + Math.random() * 8) + "s";
+            p.style.animationDelay = (-Math.random() * 12) + "s";
+            p.style.transform = `rotate(${Math.random() * 180}deg)`;
+            petals.appendChild(p);
+        }
+    </script>
+</body>
+</html>
